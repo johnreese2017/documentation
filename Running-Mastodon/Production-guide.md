@@ -153,7 +153,7 @@ uncommon.mk:427: recipe for target 'rdoc' failed
 make: *** [rdoc] Error 137
 ```
 > While there is a workaround way to solve this error.
-> `RUBY_CONFIGURE_OPTS=--disable-install-doc rbenv install 2.2.3`
+> `RUBY_CONFIGURE_OPTS=--disable-install-doc rbenv install 2.5.1`
 
 
 **This will take some time. Go stretch for a bit and drink some water while the commands run.**
