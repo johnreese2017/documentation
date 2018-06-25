@@ -132,6 +132,29 @@ To enable [Ruby](https://www.ruby-lang.org/en/), run:
 rbenv install 2.5.1
 rbenv global 2.5.1
 ```
+> ### A Helpful And Optional Note
+> Using Server Ram >1GB OR FOLLOWING ERROR WILL OCCUR
+```
+BUILD FAILED (Ubuntu 16.04 using ruby-build 20180618)
+
+Inspect or clean up the working tree at /tmp/ruby-build.20150809054729.2714
+Results logged to /tmp/ruby-build.20180625125206.16524.log
+
+Last 10 log lines:
+ 99% [867/871]  vm_exec.c
+ 99% [868/871]  vm_insnhelper.c
+ 99% [869/871]  vm_method.c
+ 99% [870/871]  vm_trace.c
+100% [871/871]  vsnprintf.c
+
+Generating RI format into /tmp/ruby-build.20180625125206.16524/ruby-2.5.1/.ext/rdoc...
+Killed
+uncommon.mk:427: recipe for target 'rdoc' failed
+make: *** [rdoc] Error 137
+```
+> While there is a workaround way to solve this error.
+> `RUBY_CONFIGURE_OPTS=--disable-install-doc rbenv install 2.2.3`
+
 
 **This will take some time. Go stretch for a bit and drink some water while the commands run.**
 
