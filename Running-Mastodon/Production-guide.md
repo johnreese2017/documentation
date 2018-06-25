@@ -345,7 +345,12 @@ We will be creating the certificate twice, once with TLS SNI validation in stand
 [nginx](http://nginx.org) and the [Let's Encrypt](https://letsencrypt.org/) tool works.
 
 ```sh
-letsencrypt certonly --standalone -d example.com
+$ sudo apt-get update
+$ sudo apt-get install software-properties-common
+$ sudo add-apt-repository ppa:certbot/certbot
+$ sudo apt-get update
+$ sudo apt-get install python-certbot-nginx 
+$ sudo certbot --nginx certonly
 ```
 
 After that successfully completes, we will use the webroot method. This requires [nginx](http://nginx.org) to be running:
@@ -353,7 +358,9 @@ After that successfully completes, we will use the webroot method. This requires
 ```sh
 systemctl start nginx
 # The letsencrypt tool will ask if you want issue a new cert, please choose that option
-letsencrypt certonly --webroot -d example.com -w /home/mastodon/live/public/
+sudo certbot --nginx certonly
+~~letsencrypt certonly --webroot -d example.com -w /home/mastodon/live/public/~~
+
 ```
 
 ### Automated Renewal Of Let's Encrypt Certificate
@@ -386,6 +393,10 @@ systemctl restart cron
 ```
 
 That is it. Your server will renew your [Let's Encrypt](https://letsencrypt.org/) certificate.
+Or you can just run
+```sh
+sudo certbot renew --dry-run
+```
 
 ## Mastodon Application Configuration
 
