@@ -350,7 +350,6 @@ $ sudo apt-get install software-properties-common
 $ sudo add-apt-repository ppa:certbot/certbot
 $ sudo apt-get update
 $ sudo apt-get install python-certbot-nginx 
-$ sudo certbot --nginx certonly
 ```
 
 After that successfully completes, we will use the webroot method. This requires [nginx](http://nginx.org) to be running:
@@ -359,8 +358,6 @@ After that successfully completes, we will use the webroot method. This requires
 systemctl start nginx
 # The letsencrypt tool will ask if you want issue a new cert, please choose that option
 sudo certbot --nginx certonly
-~~letsencrypt certonly --webroot -d example.com -w /home/mastodon/live/public/~~
-
 ```
 
 ### Automated Renewal Of Let's Encrypt Certificate
