@@ -180,6 +180,22 @@ bundle install -j$(getconf _NPROCESSORS_ONLN) --deployment --without development
 # Use yarn to install node.js dependencies
 yarn install --pure-lockfile
 ```
+> ### A Helpful And Optional Note
+> gcc version on ubuntu 16.04 default version is gcc5 so you need to install gcc6 or you will get errors
+```sh
+sudo apt-get update && \
+sudo apt-get install build-essential software-properties-common -y && \
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
+sudo apt-get update && \
+sudo apt-get install gcc-snapshot -y && \
+sudo apt-get update && \
+sudo apt-get install gcc-6 g++-6 -y && \
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60 --slave /usr/bin/g++ g++ /usr/bin/g++-6 && \
+sudo apt-get install gcc-4.8 g++-4.8 -y && \
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8;
+
+When completed, you must change to the gcc you want to work with by default. Type in your terminal:
+sudo update-alternatives --config gcc
 
 That is all we need to do for now with the `mastodon` user, you can now `exit` back to root.
 
@@ -350,6 +366,7 @@ $ sudo apt-get install software-properties-common
 $ sudo add-apt-repository ppa:certbot/certbot
 $ sudo apt-get update
 $ sudo apt-get install python-certbot-nginx 
+$ letsencrypt certonly --standalone -d discuss.dott.cf
 ```
 
 After that successfully completes, we will use the webroot method. This requires [nginx](http://nginx.org) to be running:
@@ -357,7 +374,7 @@ After that successfully completes, we will use the webroot method. This requires
 ```sh
 systemctl start nginx
 # The letsencrypt tool will ask if you want issue a new cert, please choose that option
-sudo certbot --nginx certonly
+letsencrypt certonly --webroot -d discuss.dott.cf -w /home/mastodon/live/public/
 ```
 
 ### Automated Renewal Of Let's Encrypt Certificate
