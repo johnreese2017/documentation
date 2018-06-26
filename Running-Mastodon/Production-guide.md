@@ -196,6 +196,7 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 60 --slave 
 
 When completed, you must change to the gcc you want to work with by default. Type in your terminal:
 sudo update-alternatives --config gcc
+```
 
 That is all we need to do for now with the `mastodon` user, you can now `exit` back to root.
 
